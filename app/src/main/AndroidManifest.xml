@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeekSixTaskAndroidSQ009">
         <activity
+            android:name=".AddContacts"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="false"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
