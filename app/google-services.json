@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "391024330622",
+    "project_id": "my-contact-app-15cec",
+    "storage_bucket": "my-contact-app-15cec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391024330622:android:cec5db3a245abff8f2952f",
+        "android_client_info": {
+          "package_name": "com.olamachia.weeksixtaskandroidsq009"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391024330622-l52pber36rpd19ma1gcehd09loh4hsve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD4L_BywLKO0KrIKvBNJez4V0XWwE4mvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391024330622-l52pber36rpd19ma1gcehd09loh4hsve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

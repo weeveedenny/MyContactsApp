@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_addcontact"
+        android:icon="@drawable/addcontact"
+        android:title="@string/add_contacts"
+        />
+
+    <item
+        android:id="@+id/menu_database"
+        android:icon="@drawable/database"
+        android:title="@string/read_contacts"
+        />
+
+    <item
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/profile"
+        android:title="@string/my_profile"
+        />
+
+</menu>

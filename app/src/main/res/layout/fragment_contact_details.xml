@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contact_detais_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/black"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/contact_details_view"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@color/silver"
+                android:elevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/contact_details_imageView"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:background="@drawable/profile_white"
+                android:contentDescription="@string/todo"
+                android:elevation="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_details_view"
+                app:layout_constraintEnd_toEndOf="@+id/contact_details_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/contact_details_view"
+                tools:ignore="ImageContrastCheck" />
+
+
+            <TextView
+                android:id="@+id/contact_details_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="@string/billy_banks"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact_details_view" />
+
+            <TextView
+                android:id="@+id/contacts_details_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/_09022332211"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact_details_name" />
+
+            <ImageView
+
+                android:id="@+id/contact_details_call_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contacts_details_number"
+                app:srcCompat="@drawable/call"
+                android:contentDescription="@string/todo" />
+
+            <ImageView
+                android:id="@+id/contact_detail_share_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_details_edit_icon"
+                app:layout_constraintStart_toEndOf="@+id/contact_details_edit_icon"
+                app:layout_constraintTop_toTopOf="@+id/contact_details_edit_icon"
+                app:srcCompat="@drawable/share"
+                android:contentDescription="@string/todo" />
+
+            <ImageView
+                android:id="@+id/contact_details_delete_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_detail_share_icon"
+                app:layout_constraintStart_toEndOf="@+id/contact_detail_share_icon"
+                app:layout_constraintTop_toTopOf="@+id/contact_detail_share_icon"
+                app:srcCompat="@drawable/delete"
+                android:contentDescription="@string/todo" />
+
+            <ImageView
+                android:id="@+id/contact_details_edit_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_details_call_icon"
+                app:layout_constraintStart_toEndOf="@+id/contact_details_call_icon"
+                app:layout_constraintTop_toTopOf="@+id/contact_details_call_icon"
+                app:srcCompat="@drawable/edit"
+                android:contentDescription="@string/todo" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

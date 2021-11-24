@@ -3,7 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.284375" />
+        <entry key="app/src/main/res/drawable/edit.xml" value="0.27987742594484166" />
+        <entry key="app/src/main/res/drawable/item_background.xml" value="0.27987742594484166" />
+        <entry key="app/src/main/res/drawable/profile.xml" value="0.28541666666666665" />
         <entry key="app/src/main/res/layout/activity_add_contacts.xml" value="0.2128623188405797" />
+        <entry key="app/src/main/res/layout/activity_contact_fragment.xml" value="0.2368659420289855" />
+        <entry key="app/src/main/res/layout/activity_home_activity.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_home_fragment.xml" value="0.2368659420289855" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/addcontact_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/and.xml" value="0.26510416666666664" />
+        <entry key="app/src/main/res/layout/contact_details_layout.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/contact_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/database_fragment.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_contact_details.xml" value="0.26510416666666664" />
+        <entry key="app/src/main/res/layout/fragment_database_.xml" value="0.2368659420289855" />
+        <entry key="app/src/main/res/layout/fragment_database__fragmant.xml" value="0.2368659420289855" />
+        <entry key="app/src/main/res/layout/fragment_profilefragment.xml" value="0.26510416666666664" />
+        <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.26510416666666664" />
+        <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.26510416666666664" />
       </map>
     </option>
   </component>
