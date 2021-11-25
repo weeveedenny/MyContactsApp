@@ -1,15 +1,18 @@
 package com.olamachia.weeksixtaskandroidsq009
 
+import android.app.Dialog
+import android.content.Intent
+import android.content.Intent.createChooser
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class ContactDetailsFragment : Fragment() {
@@ -17,6 +20,8 @@ class ContactDetailsFragment : Fragment() {
     lateinit private var shareIcon : ImageView
     lateinit private var callIcon : ImageView
     lateinit private  var editIcon: ImageView
+    lateinit var contact : MyModel
+    lateinit var mDatabase: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +34,8 @@ class ContactDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onInitViews(view)
+        contact = arguments?.get("contact") as MyModel
+        mDatabase =  FirebaseDatabase.getInstance().getReference("Contacts");
         deleteIcon = view.findViewById(R.id.contact_details_delete_icon)
         shareIcon = view.findViewById(R.id.contact_detail_share_icon)
         callIcon = view.findViewById(R.id.contact_details_call_icon)
@@ -36,6 +43,15 @@ class ContactDetailsFragment : Fragment() {
 
             deleteIcon.setOnClickListener {
                 dialogue()
+        }
+            shareIcon.setOnClickListener {
+            shareMyContact()
+        }
+            editIcon.setOnClickListener {
+                showEditContactDialog()
+        }
+            callIcon.setOnClickListener {
+            phoneCall()
         }
 
     }
@@ -57,7 +73,6 @@ class ContactDetailsFragment : Fragment() {
     }
 
     private fun deleteContact() {
-        val contact = arguments?.get("contact") as MyModel
         val mDatabase = FirebaseDatabase.getInstance().getReference("Contacts");
         mDatabase.child(contact.id.toString()).setValue(null)
             .addOnCompleteListener {
@@ -71,6 +86,61 @@ class ContactDetailsFragment : Fragment() {
             }
         }
     }
+
+
+
+    private fun phoneCall(){
+        val myIntent = Intent(Intent.ACTION_DIAL)
+        myIntent.data = Uri.parse("tel:${contact.phone}")
+        requireActivity().startActivity(myIntent)
+    }
+
+    private fun shareMyContact(){
+        val myIntent = Intent(Intent.ACTION_SEND)
+        myIntent.putExtra(Intent.EXTRA_TEXT, contact.name)
+        myIntent.type  = "text/plain"
+        requireActivity().startActivity(
+            createChooser(
+                myIntent,
+                contact.name
+            )
+        )
+    }
+
+    private fun showEditContactDialog(){
+        val dialog = Dialog(requireContext())
+        val inflater = LayoutInflater.from(requireContext()).inflate(R.layout.alert_layout, null, false)
+        dialog.setContentView(inflater)
+        val window = dialog.window
+        window?.setLayout(AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.WRAP_CONTENT)
+        dialog.create()
+        dialog.show()
+        val name = inflater.findViewById<EditText>(R.id.alert_layout_name)
+        val number = inflater.findViewById<EditText>(R.id.alert_layout_number)
+        val sendButton = inflater.findViewById<Button>(R.id.alert_layout_button)
+
+        sendButton?.setOnClickListener {
+            val contactName = name.text.toString()
+            val contactNumber = number.text.toString()
+            editContact(MyModel(contact.id, contactName, contactNumber))
+            dialog.dismiss()
+        }
+    }
+
+
+    private fun editContact(contact: MyModel){
+        mDatabase.child(contact.id.toString()).setValue(contact)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Toast.makeText(requireContext(), "Contact successfully edited", Toast.LENGTH_SHORT).show()
+                    requireActivity().supportFragmentManager.popBackStack()
+                } else {
+                    Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+    }
+
 
 
 

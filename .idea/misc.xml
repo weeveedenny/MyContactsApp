@@ -11,8 +11,9 @@
         <entry key="app/src/main/res/layout/activity_contact_fragment.xml" value="0.2368659420289855" />
         <entry key="app/src/main/res/layout/activity_home_activity.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home_fragment.xml" value="0.2368659420289855" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/addcontact_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/alert_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/and.xml" value="0.26510416666666664" />
         <entry key="app/src/main/res/layout/contact_details_layout.xml" value="0.33" />
         <entry key="app/src/main/res/layout/contact_layout.xml" value="0.25" />

@@ -9,16 +9,16 @@
         android:id="@+id/contact_detais_cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:backgroundTint="@color/black"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -83,43 +83,43 @@
                 android:layout_height="35dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/contacts_details_number"
-                app:srcCompat="@drawable/call"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/call" />
 
             <ImageView
                 android:id="@+id/contact_detail_share_icon"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="30dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintBottom_toBottomOf="@+id/contact_details_edit_icon"
                 app:layout_constraintStart_toEndOf="@+id/contact_details_edit_icon"
                 app:layout_constraintTop_toTopOf="@+id/contact_details_edit_icon"
-                app:srcCompat="@drawable/share"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/share" />
 
             <ImageView
                 android:id="@+id/contact_details_delete_icon"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="30dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintBottom_toBottomOf="@+id/contact_detail_share_icon"
                 app:layout_constraintStart_toEndOf="@+id/contact_detail_share_icon"
                 app:layout_constraintTop_toTopOf="@+id/contact_detail_share_icon"
-                app:srcCompat="@drawable/delete"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/delete" />
 
             <ImageView
                 android:id="@+id/contact_details_edit_icon"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="30dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintBottom_toBottomOf="@+id/contact_details_call_icon"
                 app:layout_constraintStart_toEndOf="@+id/contact_details_call_icon"
                 app:layout_constraintTop_toTopOf="@+id/contact_details_call_icon"
-                app:srcCompat="@drawable/edit"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/edit" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

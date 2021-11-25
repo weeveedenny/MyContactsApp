@@ -20,5 +20,6 @@
     <string name="add_contacts">Add Contacts</string>
     <string name="read_contacts">Read Contacts</string>
     <string name="my_profile">My Profile</string>
+    <string name="update">Update</string>
 
 </resources>

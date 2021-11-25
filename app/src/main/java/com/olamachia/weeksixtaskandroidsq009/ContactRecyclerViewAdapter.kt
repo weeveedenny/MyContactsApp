@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewViewHolder>() {
+class ContactRecyclerViewAdapter: RecyclerView.Adapter<ContactRecyclerViewAdapter.RecyclerViewViewHolder>() {
 
     private var recyclerViewList = arrayListOf<MyModel>()
     private lateinit var onItemClickListener : OnItemClickListener
@@ -29,11 +29,7 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.RecyclerView
     override fun onBindViewHolder(holder: RecyclerViewViewHolder, position: Int) {
             holder.name.text =  recyclerViewList[position].name
             holder.phoneNumber.text =  recyclerViewList[position].phone
-          holder.itemView.apply {
-              setOnClickListener {
-                 onItemClickListener.onClick(recyclerViewList[position])
-              }
-          }
+
     }
 
 
@@ -45,7 +41,6 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.RecyclerView
     fun submitList(list: ArrayList<MyModel>){
         recyclerViewList = list
         notifyDataSetChanged()
-
     }
 
 //An interface that defines an abstract onClick method
@@ -53,10 +48,5 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.RecyclerView
         fun onClick(contact:MyModel)
     }
 
-
-    //
-    fun addOnItemClickListener(onItemClickListener: OnItemClickListener) {
-        this.onItemClickListener = onItemClickListener
-    }
 
 }
