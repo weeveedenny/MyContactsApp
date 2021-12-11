@@ -20,7 +20,7 @@ class ContactDetailsFragment : Fragment() {
     lateinit private var shareIcon : ImageView
     lateinit private var callIcon : ImageView
     lateinit private  var editIcon: ImageView
-    lateinit var contact : MyModel
+    lateinit var contact : FirebaseContact
     lateinit var mDatabase: DatabaseReference
 
     override fun onCreateView(
@@ -34,7 +34,7 @@ class ContactDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onInitViews(view)
-        contact = arguments?.get("contact") as MyModel
+        contact = arguments?.get("contact") as FirebaseContact
         mDatabase =  FirebaseDatabase.getInstance().getReference("Contacts");
         deleteIcon = view.findViewById(R.id.contact_details_delete_icon)
         shareIcon = view.findViewById(R.id.contact_detail_share_icon)
@@ -59,7 +59,7 @@ class ContactDetailsFragment : Fragment() {
 
     //This sets the UI up to display the name and number from contacts list
     private fun onInitViews(view: View) {
-        val contact = arguments?.get("contact") as MyModel
+        val contact = arguments?.get("contact") as FirebaseContact
         val name = view.findViewById<TextView>(R.id.contact_details_name)
         name.apply {
             text = contact.name
@@ -122,13 +122,13 @@ class ContactDetailsFragment : Fragment() {
         sendButton?.setOnClickListener {
             val contactName = name.text.toString()
             val contactNumber = number.text.toString()
-            editContact(MyModel(contact.id, contactName, contactNumber))
+            editContact(FirebaseContact(contact.id, contactName, contactNumber))
             dialog.dismiss()
         }
     }
 
 
-    private fun editContact(contact: MyModel){
+    private fun editContact(contact: FirebaseContact){
         mDatabase.child(contact.id.toString()).setValue(contact)
             .addOnCompleteListener {
                 if (it.isSuccessful) {

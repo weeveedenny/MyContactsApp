@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 
-class AddContactFragment : Fragment(), RecyclerViewAdapter.OnItemClickListener {
-    lateinit var addContactButton: Button
-    val database = FirebaseDatabase.getInstance().getReference(contactsNode)
-    private lateinit var contactAdapter: RecyclerViewAdapter
-    lateinit var name: String
+class AddContactFragment : Fragment(), FirebseContactRecyclerAdapter.OnItemClickListener {
+    private lateinit var addContactButton: Button
+    private val database = FirebaseDatabase.getInstance().getReference(CONTACTS_NODE)
+    private lateinit var contactAdapterFirebseContact: FirebseContactRecyclerAdapter
+    private lateinit var name: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,18 +29,22 @@ class AddContactFragment : Fragment(), RecyclerViewAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        contactAdapter = RecyclerViewAdapter()
-        contactAdapter.apply {
+
+        contactAdapterFirebseContact = FirebseContactRecyclerAdapter()
+
+        contactAdapterFirebseContact.apply {
             addOnItemClickListener(this@AddContactFragment)
         }
+
         addContactButton = view.findViewById(R.id.addcontact_button)
+
         addContactButton.setOnClickListener {
             validateContactFields()
         }
 
         val contactsRecyclerView = view.findViewById<RecyclerView>(R.id.addcontact_recyclerview)
         contactsRecyclerView.apply {
-            adapter = contactAdapter
+            adapter = contactAdapterFirebseContact
             layoutManager = LinearLayoutManager(requireContext())
         }
         getContactsFromDatabase()
@@ -51,7 +55,15 @@ class AddContactFragment : Fragment(), RecyclerViewAdapter.OnItemClickListener {
     //function to validate add contact form
     private fun validateContactFields() {
         name = view?.findViewById<EditText>(R.id.addcontact_name)?.text.toString()
+
+//      name =  view?.let{
+//            it.findViewById<EditText>(R.id.addcontact_name).text.toString()
+//        } ?: ""
+//
+
         val phoneNumber = view?.findViewById<EditText>(R.id.addcontact_Phone)?.text.toString()
+
+//      this::name.isLateinit
 
         if (name.isNotEmpty() && phoneNumber.isNotEmpty()) {
             sendToDatabase(name, phoneNumber)
@@ -63,14 +75,16 @@ class AddContactFragment : Fragment(), RecyclerViewAdapter.OnItemClickListener {
 
     //Function to insert data in database
     private fun sendToDatabase(name: String, phoneNumber: String) {
-        val newUser = MyModel(null, name, phoneNumber)
+        val newUser = FirebaseContact(null, name, phoneNumber)
         newUser.id = database.push().key
         database.child(newUser.id!!).setValue(newUser).addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(requireContext(), "Contact Added Successfully", Toast.LENGTH_LONG)
                     .show()
-                val deleteName = view?.findViewById<EditText>(R.id.addcontact_name)?.text?.clear()
-                val deleteNumber = view?.findViewById<EditText>(R.id.addcontact_Phone)?.text?.clear()
+
+                view?.findViewById<EditText>(R.id.addcontact_name)?.text?.clear()
+                view?.findViewById<EditText>(R.id.addcontact_Phone)?.text?.clear()
+
             } else {
                 Toast.makeText(requireContext(), "Unable to add contact", Toast.LENGTH_LONG).show()
             }
@@ -82,25 +96,23 @@ class AddContactFragment : Fragment(), RecyclerViewAdapter.OnItemClickListener {
     private fun getContactsFromDatabase() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val contactsFromDB = arrayListOf<MyModel>()
-                for (i in snapshot.children) {
-                    val contact = i.getValue(MyModel::class.java)
+                val contactsFromDB = arrayListOf<FirebaseContact>()
+                for (child in snapshot.children) {
+                    val contact = child.getValue(FirebaseContact::class.java)
                     contactsFromDB.add(contact!!)
                 }
-                contactAdapter.submitList(contactsFromDB)
-                contactAdapter.notifyDataSetChanged()
+                contactAdapterFirebseContact.submitList(contactsFromDB)
+                contactAdapterFirebseContact.notifyDataSetChanged()
             }
 
-            override fun onCancelled(error: DatabaseError) {
-
-            }
+            override fun onCancelled(error: DatabaseError) {}
 
         })
     }
 
 
     //function add contact details to bundle and send to contact details layout
-    override fun onClick(contact: MyModel) {
+    override fun onClick(contact: FirebaseContact) {
 
         val contactBundle = Bundle()
         contactBundle.putParcelable("contact", contact)

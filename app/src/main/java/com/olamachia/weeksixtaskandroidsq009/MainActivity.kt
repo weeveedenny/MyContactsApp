@@ -6,14 +6,15 @@ import android.os.Bundle
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
-    lateinit private var mainButton: Button
+    private lateinit var mainButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         mainButton = findViewById(R.id.main_button)
         mainButton.setOnClickListener {
-            val intent = Intent( this, HomeActivity::class.java )
+            val intent = Intent(  this, HomeActivity::class.java )
             startActivity(intent)
 
         }

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ContactRecyclerViewAdapter: RecyclerView.Adapter<ContactRecyclerViewAdapter.RecyclerViewViewHolder>() {
 
-    private var recyclerViewList = arrayListOf<MyModel>()
+    private var recyclerViewList = arrayListOf<FirebaseContact>()
     private lateinit var onItemClickListener : OnItemClickListener
 
 
@@ -32,20 +32,19 @@ class ContactRecyclerViewAdapter: RecyclerView.Adapter<ContactRecyclerViewAdapte
 
     }
 
-
     override fun getItemCount(): Int {
         return recyclerViewList.size
     }
 
 
-    fun submitList(list: ArrayList<MyModel>){
+    fun submitList(list: ArrayList<FirebaseContact>){
         recyclerViewList = list
         notifyDataSetChanged()
     }
 
 //An interface that defines an abstract onClick method
     interface  OnItemClickListener {
-        fun onClick(contact:MyModel)
+        fun onClick(contact:FirebaseContact)
     }
 
 

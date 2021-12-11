@@ -7,26 +7,29 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class HomeActivity : AppCompatActivity() {
-    lateinit private var nav_button : BottomNavigationView
+
+    private lateinit var bottomNavigationView : BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_activity)
 
-        anotherFragment(AddContactFragment())
-        nav_button  = findViewById(R.id.menu_bottomnav)
+        addFragmentToActivity(AddContactFragment())
 
-        nav_button.setOnNavigationItemReselectedListener {
+        bottomNavigationView  = findViewById(R.id.menu_bottomnav)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_addcontact -> anotherFragment(AddContactFragment())
-                R.id.menu_database -> anotherFragment(ReadContactFragment())
-                R.id.menu_profile -> anotherFragment(Profilefragment())
+                R.id.menu_addcontact -> addFragmentToActivity(AddContactFragment())
+                R.id.menu_database -> addFragmentToActivity(ReadContactFragment())
+                R.id.menu_profile -> addFragmentToActivity(Profilefragment())
             }
             true
         }
 
     }
 
-    private fun anotherFragment(fragment : Fragment) {
+    private fun addFragmentToActivity(fragment : Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.addToBackStack(null)

@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.os.Bundle
 import android.provider.ContactsContract
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -75,7 +74,7 @@ class ReadContactFragment : Fragment() {
     @SuppressLint("Range")
     fun readData() {
 
-        val contacts = arrayListOf<MyModel>()
+        val contacts = arrayListOf<FirebaseContact>()
         var cursor: Cursor? = requireActivity().contentResolver
             .query(
                 ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
@@ -90,7 +89,7 @@ class ReadContactFragment : Fragment() {
                 cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
             val phoneNumber =
                 cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-            contacts.add(MyModel(phone = phoneNumber, name = name))
+            contacts.add(FirebaseContact(phone = phoneNumber, name = name))
         }
         cursor?.close()
 
