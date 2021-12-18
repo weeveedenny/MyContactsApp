@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.Intent.createChooser
 import android.net.Uri
 import android.os.Bundle
-
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -88,7 +87,6 @@ class ContactDetailsFragment : Fragment() {
     }
 
 
-
     private fun phoneCall(){
         val myIntent = Intent(Intent.ACTION_DIAL)
         myIntent.data = Uri.parse("tel:${contact.phone}")
@@ -143,8 +141,6 @@ class ContactDetailsFragment : Fragment() {
 
 
 
-
-
     private fun dialogue(){
             val builder = AlertDialog.Builder(requireContext())
             //set title for alert dialog
@@ -167,7 +163,6 @@ class ContactDetailsFragment : Fragment() {
             // Set other dialog properties
             alertDialog.setCancelable(false)
             alertDialog.show()
-
 
     }
 
