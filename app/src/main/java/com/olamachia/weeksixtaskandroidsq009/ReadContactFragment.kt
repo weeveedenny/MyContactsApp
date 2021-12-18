@@ -61,12 +61,9 @@ class ReadContactFragment : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
             readData()
-
         }
         else{
-
         }
     }
 
