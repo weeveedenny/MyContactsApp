@@ -92,11 +92,6 @@ class ReadContactFragment : Fragment() {
             contacts.add(FirebaseContact(phone = phoneNumber, name = name))
         }
         cursor?.close()
-
         myAdapter.submitList(contacts)
-
-
     }
-
-
 }
